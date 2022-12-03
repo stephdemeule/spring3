@@ -1,5 +1,8 @@
 package projet.spring3;
 
+import org.springframework.stereotype.Service;
+
+@Service("renderer")
 public class StandardOutMessageRenderer implements MessageRenderer {
 
     private MessageProvider messageProvider = null;

@@ -10,12 +10,9 @@
           http://www.springframework.org/schema/context
           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <bean id="provider" class="projet.spring3.HelloWorldMessageProvider"/>
-    <bean id="messageProvider" class="projet.spring3.ConfigurableMessageProvider"
-        c:message="This is a configurable message"/>
-    <bean id="renderer" class="projet.spring3.StandardOutMessageRenderer"
-          p:messageProvider-ref="provider"/>
-    <bean id="oracle" name="wiseworm" class="sp3.BookwormOracle"/>
+    <context:annotation-config/>
+
+    <context:component-scan base-package="projet.spring3" />
 
 
 </beans>
