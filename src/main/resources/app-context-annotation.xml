@@ -13,6 +13,10 @@
     <context:annotation-config/>
 
     <context:component-scan base-package="projet.spring3" />
+    <bean id="message" class="java.lang.String"
+          c:_0="This is a configurable message"/>
+    <bean id="renderer" class="projet.spring3.StandardOutMessageRenderer"
+          p:messageProvider-ref="messageProvider"/>
 
 
 </beans>

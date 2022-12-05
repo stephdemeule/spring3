@@ -10,12 +10,45 @@
           http://www.springframework.org/schema/context
           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
-    <bean id="provider" class="projet.spring3.HelloWorldMessageProvider"/>
     <bean id="messageProvider" class="projet.spring3.ConfigurableMessageProvider"
         c:message="This is a configurable message"/>
     <bean id="renderer" class="projet.spring3.StandardOutMessageRenderer"
-          p:messageProvider-ref="provider"/>
+          p:messageProvider-ref="messageProvider"/>
     <bean id="oracle" name="wiseworm" class="sp3.BookwormOracle"/>
+    <bean id="message" class="java.lang.String"
+          c:_0="This is a configurable message"/>
+<!--    <bean id="constructorConfusion"
+          class="projet.spring3.ConstructorConfusion">
+        <constructor-arg type="int">
+            <value>90</value>
+        </constructor-arg>
+    </bean>-->
+    <bean id="injectSimple" class="projet.spring3.InjectSimple">
+        <property name="name">
+            <value>John Smith</value>
+        </property>
+        <property name="age">
+            <value>35</value>
+        </property>
+        <property name="height">
+            <value>1.78</value>
+        </property>
+        <property name="programmer">
+            <value>true</value>
+        </property>
+        <property name="ageInSeconds">
+            <value>1103760000</value>
+        </property>
+    </bean>
+    <bean id="injectSimpleConfig" class="projet.spring3.xml.InjectSimpleConfig"/>
+
+    <bean id="injectSimpleSpel" class="projet.spring3.xml.InjectSimpleSpel">
+        <property name="name" value="#{injectSimpleConfig.name}"/>
+        <property name="age" value="#{injectSimpleConfig.age + 1}"/>
+        <property name="height" value="#{injectSimpleConfig.height}"/>
+        <property name="isProgrammer" value="#{injectSimpleConfig.programmer}"/>
+        <property name="ageInSeconds" value="#{injectSimpleConfig.ageInSeconds}"/>
+    </bean>
 
 
 </beans>

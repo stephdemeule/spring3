@@ -17,10 +17,11 @@ public class HelloWorldSpringDI {
         mr.render();*/
 
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
-        ctx.load("classpath:app-context-annotation.xml");
+        ctx.load("classpath:app-context.xml");
         ctx.refresh();
 
         MessageRenderer messageRenderer = ctx.getBean("renderer", MessageRenderer.class);
         messageRenderer.render();
+
     }
 }
