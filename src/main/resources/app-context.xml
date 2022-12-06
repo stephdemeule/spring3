@@ -15,6 +15,11 @@
     <bean id="renderer" class="projet.spring3.StandardOutMessageRenderer"
           p:messageProvider-ref="messageProvider"/>
     <bean id="oracle" name="wiseworm" class="sp3.BookwormOracle"/>
+    <bean id="injectRef" class="projet.spring3.xml.InjectRef">
+        <property name="oracle">
+            <ref bean="wiseworm"/>
+        </property>
+    </bean>
     <bean id="message" class="java.lang.String"
           c:_0="This is a configurable message"/>
 <!--    <bean id="constructorConfusion"
@@ -49,6 +54,27 @@
         <property name="isProgrammer" value="#{injectSimpleConfig.programmer}"/>
         <property name="ageInSeconds" value="#{injectSimpleConfig.ageInSeconds}"/>
     </bean>
+    <bean id="target1" class="projet.spring3.SimpleTarget">
+        <property name="val">
+            <ref bean="injectBeanParent"/>
+        </property>
+    </bean>
+    <bean id="target2" class="projet.spring3.SimpleTarget">
+        <property name="val">
+            <ref bean="injectBean"/>
+        </property>
+    </bean>
 
+    <bean id="target3" class="projet.spring3.SimpleTarget">
+        <property name="val">
+            <ref parent="injectBean"/>
+        </property>
+    </bean>
+
+    <bean id="injectBean" class="java.lang.String">
+        <constructor-arg>
+            <value>Bean In Child</value>
+        </constructor-arg>
+    </bean>
 
 </beans>
