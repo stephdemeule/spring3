@@ -108,6 +108,28 @@
             </list>
         </property>
     </bean>
+    <bean id="name1" name="name2 name3,name4;name5" class="java.lang.String"/>
+    <alias name="name1" alias="name6"/>
+    <bean id="nonSingleton" class="java.lang.String" scope="prototype">
+        <constructor-arg>
+            <value>Clarence Ho</value>
+        </constructor-arg>
+    </bean>
+    <bean id="inheritParent" class="projet.spring3.SimpleBean">
+        <property name="name">
+            <value>Clarence Ho</value>
+        </property>
+        <property name="age">
+            <value>22</value>
+        </property>
+    </bean>
+    <bean id="inheritChild" class="projet.spring3.SimpleBean"
+          parent="inheritParent">
+        <property name="age">
+            <value>35</value>
+        </property>
+    </bean>
+
 
 
 </beans>
