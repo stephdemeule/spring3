@@ -42,5 +42,26 @@
         <ref bean="oracle"/>
     </util:list>
 
+    <bean id="simpleBean1" class="projet.spring3.lifecycle.SimpleBeanWithAnnotation" init-method="init">
+        <property name="name">
+            <value>Clarence Ho</value>
+        </property>
+        <property name="age">
+            <value>100</value>
+        </property>
+    </bean>
+
+    <bean id="simpleBean2" class="projet.spring3.lifecycle.SimpleBeanWithAnnotation">
+        <property name="age">
+            <value>100</value>
+        </property>
+    </bean>
+
+    <bean id="simpleBean3" class="projet.spring3.lifecycle.SimpleBeanWithAnnotation">
+        <property name="name">
+            <value>Clarence Ho</value>
+        </property>
+    </bean>
+
 
 </beans>
