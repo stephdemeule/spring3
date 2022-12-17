@@ -8,7 +8,6 @@
           class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>buttons</value>
                 <value>labels</value>
             </list>
         </property>
