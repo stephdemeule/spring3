@@ -2,6 +2,31 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.1.xsd
+        http://www.springframework.org/schema/jdbc
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd
+        http://www.springframework.org/schema/jee
+        http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
+    <context:component-scan base-package="projet.spring3.dao.jdbc.annotation"/>
+
+    <context:annotation-config/>
+
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:schema.sql"/>
+        <jdbc:script location="classpath:test-data.sql"/>
+    </jdbc:embedded-database>
+
+</beans>
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:util="http://www.springframework.org/schema/util"
@@ -13,11 +38,11 @@
     <context:annotation-config/>
 
     <context:component-scan base-package="projet.spring3" />
-    <!-- Sample for constructor injection -->
+    &lt;!&ndash; Sample for constructor injection &ndash;&gt;
     <bean id="message" class="java.lang.String"
           c:_0="This is a configurable message"/>
 
-    <!-- Sample for collection injection -->
+    &lt;!&ndash; Sample for collection injection &ndash;&gt;
     <util:map id="map" map-class="java.util.HashMap">
         <entry key="someValue">
             <value>Hello World!</value>
@@ -64,4 +89,4 @@
     </bean>
 
 
-</beans>
+</beans>-->

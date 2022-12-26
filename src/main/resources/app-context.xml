@@ -5,10 +5,11 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:c="http://www.springframework.org/schema/c"
        xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
           http://www.springframework.org/schema/context
-          http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+          http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
     <bean id="messageProvider" class="projet.spring3.ConfigurableMessageProvider"
         c:message="This is a configurable message"/>
@@ -127,6 +128,17 @@
           parent="inheritParent">
         <property name="age">
             <value>35</value>
+        </property>
+    </bean>
+
+    <jdbc:embedded-database id="dataSource" type="H2">
+        <jdbc:script location="classpath:schema.sql"/>
+        <jdbc:script location="classpath:test-data.sql"/>
+    </jdbc:embedded-database>
+
+    <bean id="contactDao" class="projet.spring3.dao.jdbc.xml.JdbcContactDao">
+        <property name="dataSource">
+            <ref local="dataSource"/>
         </property>
     </bean>
 
