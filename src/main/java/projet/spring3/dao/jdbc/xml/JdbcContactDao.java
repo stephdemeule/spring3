@@ -47,6 +47,11 @@ public class JdbcContactDao implements ContactDao, InitializingBean {
         return jdbcTemplate.query(sql, new ContactWithDetailExtractor());
     }
 
+    @Override
+    public void insertWithDetail(Contact contact) {
+
+    }
+
     public String findLastNameById(Long id) {
         String sql = "select last_name from contact where id = :contactId";
 

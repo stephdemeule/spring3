@@ -18,4 +18,6 @@ public interface ContactDao {
     public void delete(Long contactId);
 
     List<Contact> findAllWithDetail();
+
+    public void insertWithDetail(Contact contact);
 }
